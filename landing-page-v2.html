@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<!-- landing-page-v2.html | ClinicBoostMiami | Premium SaaS Redesign | 2026-04-23 -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ClinicBoostMiami — Healthcare IT Automation for Miami Clinics | HIPAA-Ready</title>
+  <meta name="description" content="ClinicBoostMiami helps Miami clinics cut no-shows, automate operations, and track revenue daily. HIPAA BAA included. Bilingual.">
+  <link rel="canonical" href="https://clinicboostmiami.com/" />
+  <meta name="robots" content="index, follow">
+  <meta name="geo.region" content="US-FL">
+  <meta name="geo.placename" content="Miami, Florida">
+
+  <meta property="og:title" content="ClinicBoostMiami — Healthcare IT Automation for Miami Clinics | HIPAA-Ready">
+  <meta property="og:description" content="Cut no-shows, automate clinic operations, and track revenue daily. HIPAA BAA included. Bilingual Miami-Dade service.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://clinicboostmiami.com/">
+  <meta property="og:image" content="https://clinicboostmiami.com/og-image.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_MX">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"LocalBusiness","name":"ClinicBoostMiami","description":"ClinicBoostMiami helps Miami clinics cut no-shows, automate operations, and track revenue daily. HIPAA BAA included. Bilingual.","url":"https://clinicboostmiami.com/","address":{"@type":"PostalAddress","addressLocality":"Miami Springs","addressRegion":"FL","addressCountry":"US"},"areaServed":{"@type":"AdministrativeArea","name":"Miami-Dade County"},"priceRange":"$$","serviceType":["Clinic Revenue Automation","HIPAA-Compliant Dashboards","No-Show Reduction Systems","Call Center KPI Tracking"],"inLanguage":["en","es"]}
+  </script>
+
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── VARIABLES ── */
+    :root {
+      --bg:          #080D1A;
+      --bg-2:        #0C1220;
+      --bg-card:     #101828;
+      --bg-card-h:   #151F30;
+      --bg-elevated: #1A2540;
+      --accent:      #6366F1;
+      --accent-2:    #8B5CF6;
+      --accent-glow: rgba(99,102,241,.22);
+      --success:     #10B981;
+      --warning:     #F59E0B;
+      --danger:      #EF4444;
+      --grad:        linear-gradient(135deg,#6366F1,#8B5CF6);
+      --grad-h:      linear-gradient(135deg,#4F46E5,#7C3AED);
+      --border:      rgba(99,102,241,.14);
+      --border-h:    rgba(99,102,241,.30);
+      --text-1:      #F1F5F9;
+      --text-2:      #94A3B8;
+      --text-3:      #64748B;
+      --r-sm:  8px; --r-md: 16px; --r-lg: 24px;
+      --sh-card:  0 4px 24px rgba(0,0,0,.35);
+      --sh-hover: 0 16px 48px rgba(99,102,241,.18), 0 4px 16px rgba(0,0,0,.4);
+    }
+    @property --angle { syntax:'<angle>'; initial-value:0deg; inherits:false; }
+
+    /* ── BASE ── */
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-1);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    svg { display: block; }
+
+    /* ── LANG SYSTEM ── */
+    body:not(.lang-es) [data-lang="es"] { display: none !important; }
+    body.lang-es [data-lang="en"] { display: none !important; }
+
+    /* ── KEYFRAMES ── */
+    @keyframes pulse    { 0%,100%{opacity:.5} 50%{opacity:1} }
+    @keyframes barGrow  { from{transform:scaleY(0)} to{transform:scaleY(1)} }
+    @keyframes borderR  { from{--angle:0deg} to{--angle:360deg} }
+    @keyframes floatY   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    @keyframes fadeUp   { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes glowP    { 0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,0)} 50%{box-shadow:0 0 24px 2px rgba(99,102,241,.28)} }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .65s cubic-bezier(.4,0,.2,1),transform .65s cubic-bezier(.4,0,.2,1); }
+    .reveal.in { opacity:1; transform:translateY(0); }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width:1140px; margin:0 auto; padding:0 24px; }
+    section { padding:88px 0; }
+
+    /* ── EYEBROW ── */
+    .eyebrow {
+      display:inline-flex; align-items:center; gap:7px;
+      font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--accent); padding:5px 14px;
+      background:rgba(99,102,241,.09); border:1px solid rgba(99,102,241,.22);
+      border-radius:100px; margin-bottom:16px;
+    }
+    .eyebrow-dot { width:5px; height:5px; border-radius:50%; background:var(--accent); animation:pulse 2s ease-in-out infinite; flex-shrink:0; }
+
+    /* ── SECTION TITLE ── */
+    .s-title {
+      font-size: clamp(1.75rem,3.2vw,2.6rem); font-weight:800;
+      letter-spacing:-.028em; line-height:1.12; margin-bottom:14px;
+    }
+    .s-sub { font-size:.97rem; color:var(--text-2); max-width:600px; line-height:1.75; }
+    .t-center { text-align:center; }
+    .t-center .s-sub { margin-left:auto; margin-right:auto; }
+
+    /* ── GRADIENT TEXT ── */
+    .grad { background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:13px 26px; border-radius:var(--r-sm);
+      font-family:inherit; font-size:.92rem; font-weight:600;
+      cursor:pointer; border:none; transition:all .28s cubic-bezier(.4,0,.2,1);
+      text-decoration:none; white-space:nowrap; line-height:1;
+    }
+    .btn-primary {
+      background:var(--grad); color:#fff;
+      box-shadow:0 4px 20px rgba(99,102,241,.32);
+    }
+    .btn-primary:hover { background:var(--grad-h); box-shadow:0 8px 32px rgba(99,102,241,.46); transform:translateY(-2px); }
+    .btn-outline {
+      background:transparent; color:var(--text-1);
+      border:1px solid rgba(99,102,241,.32);
+    }
+    .btn-outline:hover { background:rgba(99,102,241,.08); border-color:var(--accent); transform:translateY(-2px); }
+    .btn-sm { padding:9px 18px; font-size:.82rem; }
+    .btn svg { width:16px; height:16px; flex-shrink:0; }
+
+    /* ════════════════════════════════════════
+       [01] NAV
+    ════════════════════════════════════════ */
+    #nav {
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      padding:0 24px;
+      background:rgba(8,13,26,.85);
+      backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(99,102,241,.10);
+      transition:border-color .3s, box-shadow .3s;
+    }
+    #nav.scrolled { border-bottom-color:rgba(99,102,241,.20); box-shadow:0 4px 32px rgba(0,0,0,.4); }
+    .nav-in {
+      max-width:1140px; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between; height:68px; gap:16px;
+    }
+    .nav-logo {
+      font-size:1.18rem; font-weight:800; letter-spacing:-.02em;
+      background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      white-space:nowrap; flex-shrink:0;
+    }
+    .nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+    .nav-links a { font-size:.86rem; font-weight:500; color:var(--text-2); transition:color .2s; }
+    .nav-links a:hover { color:var(--text-1); }
+    .nav-r { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+    .lang-btn {
+      background:rgba(99,102,241,.08); border:1px solid rgba(99,102,241,.22);
+      border-radius:var(--r-sm); color:var(--accent); font-family:inherit;
+      font-size:.76rem; font-weight:700; padding:6px 13px; cursor:pointer;
+      transition:all .2s; letter-spacing:.05em;
+    }
+    .lang-btn:hover { background:rgba(99,102,241,.16); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
+    .hamburger span { display:block; width:22px; height:2px; background:var(--text-1); border-radius:2px; transition:all .3s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .mob-menu {
+      display:none; flex-direction:column; position:fixed;
+      top:68px; left:0; right:0;
+      background:#0C1220; border-bottom:1px solid rgba(99,102,241,.12);
+      box-shadow:0 12px 32px rgba(0,0,0,.5);
+      padding:14px 24px 22px;
+      opacity:0; transform:translateY(-10px); pointer-events:none;
+      transition:all .28s cubic-bezier(.4,0,.2,1); z-index:999;
+    }
+    .mob-menu.open { opacity:1; transform:translateY(0); pointer-events:all; }
+    .mob-menu a {
+      display:block; padding:13px 0; font-size:.97rem; font-weight:500;
+      color:var(--text-2); border-bottom:1px solid rgba(255,255,255,.05); transition:color .2s;
+    }
+    .mob-menu a:last-of-type { border-bottom:none; }
+    .mob-menu a:hover { color:var(--text-1); }
+    .mob-footer { display:flex; gap:10px; padding-top:18px; flex-wrap:wrap; }
+
+    /* ════════════════════════════════════════
+       [02] HERO
+    ════════════════════════════════════════ */
+    #hero {
+      min-height:100vh; display:flex; align-items:center;
+      position:relative; overflow:hidden;
+      padding:104px 24px 72px;
+      background:radial-gradient(ellipse 80% 60% at 10% 30%, rgba(99,102,241,.10) 0%, transparent 65%),
+                 radial-gradient(ellipse 60% 50% at 90% 70%, rgba(139,92,246,.07) 0%, transparent 60%),
+                 var(--bg);
+    }
+    /* subtle dot grid */
+    #hero::before {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background-image: radial-gradient(rgba(99,102,241,.07) 1px, transparent 1px);
+      background-size:28px 28px;
+    }
+    .hero-in {
+      position:relative; z-index:1;
+      max-width:1140px; margin:0 auto; width:100%;
+      display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;
+    }
+    /* left */
+    .hero-pill {
+      display:inline-flex; align-items:center; gap:7px;
+      font-size:.69rem; font-weight:600; letter-spacing:.09em; text-transform:uppercase;
+      color:var(--accent); padding:7px 16px;
+      border:1px solid rgba(99,102,241,.30); border-radius:100px;
+      background:rgba(99,102,241,.07); margin-bottom:22px;
+      animation:glowP 3s ease-in-out infinite;
+    }
+    .hero-pill-dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation:pulse 2s ease-in-out infinite; flex-shrink:0; }
+    #hero h1 {
+      font-size:clamp(2rem,4.2vw,3.4rem); font-weight:800;
+      letter-spacing:-.03em; line-height:1.08; margin-bottom:22px;
+    }
+    .hero-sub { font-size:1.05rem; color:var(--text-2); line-height:1.75; margin-bottom:32px; max-width:470px; }
+    .hero-ctas { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:10px; }
+    .hero-micro { font-size:.73rem; color:var(--text-3); margin-bottom:40px; }
+    .hero-stats {
+      display:flex; gap:32px; flex-wrap:wrap;
+      padding-top:28px; border-top:1px solid rgba(255,255,255,.07);
+    }
+    .h-stat { display:flex; flex-direction:column; gap:3px; }
+    .h-stat-n { font-size:1.85rem; font-weight:800; line-height:1; letter-spacing:-.02em; }
+    .h-stat-l { font-size:.68rem; color:var(--text-3); font-weight:500; letter-spacing:.03em; }
+
+    /* dashboard mockup */
+    .hero-dash {
+      background:#0B1322; border:1px solid rgba(99,102,241,.35);
+      border-radius:20px; padding:24px;
+      box-shadow:0 0 80px rgba(99,102,241,.14), 0 32px 64px rgba(0,0,0,.4);
+      position:relative; overflow:hidden;
+      animation:floatY 7s ease-in-out infinite;
+    }
+    .hero-dash::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:1px;
+      background:linear-gradient(90deg,transparent,rgba(99,102,241,.7),transparent);
+    }
+    .dash-hdr {
+      display:flex; align-items:center; justify-content:space-between;
+      margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,.05);
+    }
+    .dash-title { font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#818CF8; }
+    .dash-live { display:flex; align-items:center; gap:5px; font-size:.65rem; font-weight:600; color:#34D399; }
+    .dash-live-dot { width:6px; height:6px; border-radius:50%; background:#34D399; animation:pulse 1.5s ease-in-out infinite; }
+    .bar-row { display:flex; align-items:flex-end; gap:4px; height:64px; margin-bottom:14px; }
+    .bar {
+      flex:1; border-radius:3px 3px 0 0; transform-origin:bottom;
+      transform:scaleY(0); animation:barGrow .7s cubic-bezier(.4,0,.2,1) forwards;
+      animation-delay:calc(var(--i) * .05s);
+    }
+    .bar.hi { background:linear-gradient(to top,#6366F1,#8B5CF6); }
+    .bar.lo { background:rgba(99,102,241,.28); }
+    .bar-lbl { font-size:.6rem; color:#4B5563; text-align:center; margin-bottom:14px; letter-spacing:.04em; }
+    .d-metrics { display:flex; flex-direction:column; gap:7px; }
+    .d-row {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:7px 11px; background:rgba(255,255,255,.025);
+      border:1px solid rgba(255,255,255,.045); border-radius:8px;
+    }
+    .d-row-l { display:flex; align-items:center; gap:7px; font-size:.76rem; color:#9CA3AF; }
+    .mdot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+    .mdot-g { background:#10B981; } .mdot-a { background:#F59E0B; } .mdot-i { background:#6366F1; }
+    .d-val { font-size:.82rem; font-weight:700; }
+    .d-val.g { color:#34D399; } .d-val.r { color:#EF4444; }
+    .d-foot {
+      margin-top:12px; padding-top:10px; border-top:1px solid rgba(255,255,255,.04);
+      font-size:.64rem; color:#4B5563; display:flex; align-items:center; gap:6px;
+    }
+
+    /* ════════════════════════════════════════
+       [03] TRUST STRIP
+    ════════════════════════════════════════ */
+    #trust {
+      background:var(--bg-2);
+      border-top:1px solid rgba(99,102,241,.10);
+      border-bottom:1px solid rgba(99,102,241,.10);
+      padding:20px 24px;
+    }
+    .trust-in {
+      max-width:1140px; margin:0 auto;
+      display:flex; justify-content:center; align-items:center;
+      gap:32px; flex-wrap:wrap;
+    }
+    .t-item { display:flex; align-items:center; gap:8px; }
+    .t-item svg { width:16px; height:16px; color:var(--accent); flex-shrink:0; }
+    .t-item span { font-size:.78rem; font-weight:500; color:var(--text-2); white-space:nowrap; }
+    .t-sep { width:1px; height:18px; background:rgba(255,255,255,.07); flex-shrink:0; }
+
+    /* ════════════════════════════════════════
+       [04] PAIN
+    ════════════════════════════════════════ */
+    #pain { background:var(--bg); }
+    .pain-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
+    .pain-card {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--r-md); padding:30px;
+      position:relative; overflow:hidden;
+      transition:transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s, border-color .3s;
+      box-shadow:var(--sh-card);
+    }
+    .pain-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:linear-gradient(90deg,#F59E0B,#EF4444);
+    }
+    .pain-card:hover { transform:translateY(-6px); box-shadow:var(--sh-hover); border-color:var(--border-h); }
+    .pain-ico {
+      width:48px; height:48px; border-radius:14px; background:rgba(245,158,11,.10);
+      border:1px solid rgba(245,158,11,.16);
+      display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+    }
+    .pain-ico svg { width:22px; height:22px; color:#F59E0B; }
+    .pain-card h3 { font-size:1rem; font-weight:700; margin-bottom:10px; letter-spacing:-.01em; }
+    .pain-card p { font-size:.85rem; color:var(--text-2); line-height:1.7; margin-bottom:18px; }
+    .pain-badge {
+      display:inline-flex; align-items:center; gap:5px;
+      font-size:.76rem; font-weight:700; color:var(--warning);
+      padding:5px 12px; background:rgba(245,158,11,.08);
+      border:1px solid rgba(245,158,11,.18); border-radius:100px;
+    }
+    .pain-badge svg { width:12px; height:12px; flex-shrink:0; }
+
+    /* ════════════════════════════════════════
+       [05] HOW IT WORKS
+    ════════════════════════════════════════ */
+    #how { background:var(--bg-2); }
+    .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:52px; position:relative; }
+    .steps-grid::before {
+      content:''; position:absolute;
+      top:32px; left:calc(16.66% + 16px); right:calc(16.66% + 16px); height:1px;
+      background:linear-gradient(90deg,transparent,var(--border-h),transparent);
+    }
+    .step {
+      display:flex; flex-direction:column; align-items:center; text-align:center;
+      padding:0 10px; position:relative; z-index:1;
+    }
+    .step-n {
+      width:60px; height:60px; border-radius:50%; background:var(--grad);
+      display:flex; align-items:center; justify-content:center;
+      font-size:.92rem; font-weight:800; color:#fff; margin-bottom:20px;
+      box-shadow:0 4px 20px rgba(99,102,241,.40); flex-shrink:0;
+    }
+    .step-n::after {
+      content:''; position:absolute; inset:-4px; border-radius:50%;
+      border:1px solid rgba(99,102,241,.25); top:0; left:50%; transform:translateX(-50%);
+      width:68px; height:68px;
+    }
+    .step-lbl { font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+    .step h3 { font-size:.97rem; font-weight:700; margin-bottom:8px; letter-spacing:-.01em; }
+    .step p { font-size:.84rem; color:var(--text-2); line-height:1.7; }
+
+    /* Metrics grid below steps */
+    .metrics-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:48px; }
+    .m-card {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--r-md); padding:22px 24px;
+      transition:transform .28s, box-shadow .28s, border-color .28s;
+      box-shadow:var(--sh-card);
+    }
+    .m-card:hover { transform:translateY(-5px); box-shadow:var(--sh-hover); border-color:var(--border-h); }
+    .m-ico {
+      width:42px; height:42px; border-radius:11px;
+      display:flex; align-items:center; justify-content:center; margin-bottom:14px;
+    }
+    .m-ico svg { width:20px; height:20px; }
+    .mi-a { background:rgba(99,102,241,.10); border:1px solid rgba(99,102,241,.16); }
+    .mi-a svg { color:#818CF8; }
+    .mi-b { background:rgba(16,185,129,.10); border:1px solid rgba(16,185,129,.16); }
+    .mi-b svg { color:#34D399; }
+    .mi-c { background:rgba(245,158,11,.10); border:1px solid rgba(245,158,11,.16); }
+    .mi-c svg { color:#FBB040; }
+    .mi-d { background:rgba(139,92,246,.10); border:1px solid rgba(139,92,246,.16); }
+    .mi-d svg { color:#A78BFA; }
+    .mi-e { background:rgba(59,130,246,.10); border:1px solid rgba(59,130,246,.16); }
+    .mi-e svg { color:#60A5FA; }
+    .mi-f { background:rgba(236,72,153,.10); border:1px solid rgba(236,72,153,.16); }
+    .mi-f svg { color:#F472B6; }
+    .m-card h4 { font-size:.88rem; font-weight:700; margin-bottom:6px; letter-spacing:-.01em; }
+    .m-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:8px; }
+    .m-tag {
+      font-size:.67rem; font-weight:600; padding:3px 9px; border-radius:100px;
+      background:rgba(99,102,241,.07); border:1px solid rgba(99,102,241,.14); color:var(--text-2);
+    }
+
+    /* ════════════════════════════════════════
+       [07] PRICING
+    ════════════════════════════════════════ */
+    #pricing { background:var(--bg-2); }
+    .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; align-items:start; }
+    .p-card {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--r-md); padding:32px 26px;
+      display:flex; flex-direction:column; position:relative;
+      transition:transform .3s, box-shadow .3s;
+      box-shadow:var(--sh-card);
+    }
+    .p-card:hover { transform:translateY(-6px); box-shadow:var(--sh-hover); }
+    /* featured */
+    .p-card.feat { background:var(--bg-elevated); border:none; }
+    .p-card.feat::before {
+      content:''; position:absolute; inset:-1.5px; border-radius:calc(var(--r-md) + 2px);
+      background:conic-gradient(from var(--angle),#6366F1,#8B5CF6,#10B981,#6366F1);
+      z-index:-1; animation:borderR 3s linear infinite;
+    }
+    .p-card.feat::after {
+      content:''; position:absolute; inset:0; border-radius:var(--r-md);
+      background:var(--bg-elevated); z-index:-1;
+    }
+    .p-badge {
+      position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+      background:var(--grad); color:#fff; font-size:.63rem; font-weight:700;
+      padding:4px 16px; border-radius:100px; white-space:nowrap; letter-spacing:.08em; text-transform:uppercase;
+    }
+    .p-tier {
+      display:inline-flex; font-size:.62rem; font-weight:700;
+      letter-spacing:.1em; text-transform:uppercase; padding:3px 11px;
+      border-radius:100px; margin-bottom:14px; width:fit-content;
+    }
+    .t-starter { background:rgba(99,102,241,.10); color:#818CF8; border:1px solid rgba(99,102,241,.22); }
+    .t-growth  { background:rgba(139,92,246,.10); color:#A78BFA; border:1px solid rgba(139,92,246,.22); margin-top:12px; }
+    .t-ent     { background:rgba(16,185,129,.10);  color:#34D399;  border:1px solid rgba(16,185,129,.22); }
+    .p-price { font-size:2.6rem; font-weight:800; line-height:1; margin-bottom:3px; letter-spacing:-.02em; }
+    .p-price span { font-size:.9rem; font-weight:400; color:var(--text-3); }
+    .p-yr { font-size:.74rem; color:var(--success); font-weight:600; margin-bottom:4px; }
+    .p-setup { font-size:.76rem; color:var(--text-3); margin-bottom:3px; }
+    .p-waived { font-size:.7rem; color:var(--text-3); font-style:italic; margin-bottom:14px; }
+    .p-desc {
+      font-size:.83rem; color:var(--text-2); line-height:1.6;
+      margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .p-feats { list-style:none; flex:1; margin-bottom:24px; }
+    .p-feats li {
+      display:flex; align-items:flex-start; gap:9px;
+      font-size:.81rem; color:var(--text-2); padding:7px 0;
+      border-bottom:1px solid rgba(255,255,255,.04);
+    }
+    .p-feats li:last-child { border-bottom:none; }
+    .p-feats li svg { width:14px; height:14px; color:var(--success); flex-shrink:0; margin-top:2px; }
+    .p-cta { width:100%; justify-content:center; padding:13px; }
+    .pricing-foot {
+      margin-top:32px; display:flex; flex-wrap:wrap; gap:12px; justify-content:center;
+    }
+    .p-note {
+      display:flex; align-items:center; gap:7px; font-size:.76rem; color:var(--text-3);
+      padding:8px 16px; background:var(--bg-card);
+      border:1px solid var(--border); border-radius:100px;
+    }
+    .p-note svg { width:14px; height:14px; color:var(--accent); flex-shrink:0; }
+
+    /* ════════════════════════════════════════
+       [08] FINAL CTA
+    ════════════════════════════════════════ */
+    #cta {
+      background:radial-gradient(ellipse 70% 80% at 50% 50%, rgba(99,102,241,.16) 0%, transparent 70%), var(--bg);
+      border-top:1px solid rgba(99,102,241,.12);
+      padding:96px 24px;
+    }
+    .cta-in { max-width:720px; margin:0 auto; }
+
+    /* form */
+    .cta-form-wrap {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:var(--r-lg); padding:36px;
+      box-shadow:var(--sh-card);
+      margin-top:36px;
+    }
+
+    /* trust strip */
+    .cta-trust-strip {
+      display:flex; align-items:center; justify-content:center; flex-wrap:wrap;
+      gap:6px 14px; margin-top:22px;
+      font-size:.72rem; color:var(--text-3);
+    }
+    .ts-dot { opacity:.28; }
+    .ts-item { display:inline-flex; align-items:center; gap:5px; }
+    .ts-item svg { width:12px; height:12px; color:var(--accent); opacity:.75; }
+    .cf-title { font-size:1rem; font-weight:700; margin-bottom:18px; }
+    .cf-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+    .cf-field { display:flex; flex-direction:column; gap:5px; margin-bottom:12px; }
+    .cf-row .cf-field { margin-bottom:0; }
+    .cf-field label { font-size:.75rem; font-weight:600; color:var(--text-2); letter-spacing:.01em; }
+    .cf-field input, .cf-field select, .cf-field textarea {
+      font-family:inherit; font-size:.88rem; padding:10px 12px;
+      border:1px solid rgba(99,102,241,.20); border-radius:var(--r-sm);
+      background:#0A1020; color:var(--text-1);
+      transition:border-color .2s, box-shadow .2s; width:100%;
+    }
+    .cf-field textarea { resize:vertical; min-height:72px; }
+    .cf-field input:focus, .cf-field select:focus, .cf-field textarea:focus {
+      outline:none; border-color:var(--accent);
+      box-shadow:0 0 0 3px rgba(99,102,241,.14);
+    }
+    .cf-field input::placeholder, .cf-field textarea::placeholder { color:var(--text-3); }
+    .cf-field select option { background:#0A1020; }
+    .cf-submit { width:100%; justify-content:center; padding:14px; font-size:.95rem; margin-top:6px; }
+    .cf-note { font-size:.71rem; color:var(--text-3); text-align:center; margin-top:10px; }
+    #form-success {
+      display:none; text-align:center; padding:36px 24px;
+      background:rgba(16,185,129,.06); border:1px solid rgba(16,185,129,.20);
+      border-radius:var(--r-md);
+    }
+    #form-success.show { display:block; }
+    #form-success h3 { font-size:1.2rem; font-weight:800; color:var(--success); margin-bottom:8px; }
+    #form-success p { font-size:.88rem; color:var(--text-2); }
+
+    /* ── FORM ERROR STATE ── */
+    #form-error {
+      display:none; text-align:center; padding:14px 20px;
+      background:rgba(239,68,68,.07); border:1px solid rgba(239,68,68,.28);
+      border-radius:var(--r-md); margin-bottom:16px;
+    }
+    #form-error.show { display:block; }
+    #form-error p { font-size:.84rem; color:#FCA5A5; line-height:1.65; }
+    #form-error strong { color:#F87171; }
+
+    /* ── INLINE FIELD ERROR MESSAGES ── */
+    .cf-field-msg {
+      display:none; font-size:.72rem; color:#FCA5A5;
+      margin-top:4px; padding-left:2px; line-height:1.4;
+    }
+    .cf-field-msg.show { display:block; }
+    .cf-field input.invalid,
+    .cf-field select.invalid {
+      border-color:#EF4444 !important;
+      box-shadow:0 0 0 3px rgba(239,68,68,.12) !important;
+    }
+
+    /* ── HONEYPOT (invisible to humans, visible to bots) ── */
+    .hp-field {
+      visibility:hidden; position:absolute;
+      left:-9999px; top:-9999px;
+      width:1px; height:1px; overflow:hidden;
+      pointer-events:none; tabindex:-1;
+    }
+
+    /* ════════════════════════════════════════
+       [09] FOOTER
+    ════════════════════════════════════════ */
+    footer {
+      background:var(--bg-2); padding:44px 24px 32px;
+      border-top:1px solid rgba(99,102,241,.10);
+    }
+    .foot-in {
+      max-width:1140px; margin:0 auto;
+      display:flex; flex-direction:column; align-items:center; gap:16px; text-align:center;
+    }
+    .foot-logo {
+      font-size:1.3rem; font-weight:800; letter-spacing:-.02em;
+      background:var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    }
+    .foot-tag { font-size:.8rem; color:var(--text-3); margin-top:-10px; }
+    .foot-links { display:flex; gap:28px; flex-wrap:wrap; justify-content:center; list-style:none; }
+    .foot-links a { font-size:.82rem; color:var(--text-3); transition:color .2s; }
+    .foot-links a:hover { color:var(--text-2); }
+    .foot-trust {
+      display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:center;
+      font-size:.74rem; color:var(--text-3);
+    }
+    .foot-trust .dot { opacity:.3; }
+    .foot-copy { font-size:.69rem; color:var(--text-3); opacity:.5; }
+
+    /* ════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════ */
+    @media (max-width:1024px) {
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .mob-menu { display:flex; }
+    }
+    @media (max-width:860px) {
+      .pain-grid { grid-template-columns:1fr; }
+      .steps-grid { grid-template-columns:1fr; }
+      .steps-grid::before { display:none; }
+      .step { flex-direction:row; text-align:left; gap:18px; }
+      .step-n { margin-bottom:0; flex-shrink:0; }
+      .metrics-grid { grid-template-columns:1fr 1fr; }
+      .proof-in { grid-template-columns:1fr; }
+      .pricing-grid { grid-template-columns:1fr; max-width:400px; margin-left:auto; margin-right:auto; }
+    }
+    @media (max-width:720px) {
+      section { padding:64px 0; }
+      #hero { padding:92px 20px 56px; min-height:auto; }
+      .hero-in { grid-template-columns:1fr; gap:36px; }
+      .hero-sub { max-width:100%; }
+      .hero-stats { gap:18px; }
+      .metrics-grid { grid-template-columns:1fr; }
+      .cf-row { grid-template-columns:1fr; }
+    }
+    @media (max-width:480px) {
+      .hero-ctas { flex-direction:column; }
+      .trust-in { gap:18px; }
+      .t-sep { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ═══════════════════════════════════════════════════════════════════ -->
+<nav id="nav" aria-label="Primary navigation">
+  <div class="nav-in">
+    <div class="nav-logo">ClinicBoostMiami</div>
+    <ul class="nav-links">
+      <li><a href="#pain"><span data-lang="en">Services</span><span data-lang="es">Servicios</span></a></li>
+      <li><a href="#how"><span data-lang="en">How It Works</span><span data-lang="es">Cómo Funciona</span></a></li>
+      <li><a href="#pricing"><span data-lang="en">Pricing</span><span data-lang="es">Precios</span></a></li>
+      <li><a href="#cta"><span data-lang="en">Contact</span><span data-lang="es">Contacto</span></a></li>
+    </ul>
+    <div class="nav-r">
+      <button class="lang-btn" id="lang-btn" aria-label="Toggle language">ES</button>
+      <a href="#cta" class="btn btn-primary btn-sm">
+        <span data-lang="en">Free Audit →</span>
+        <span data-lang="es">Auditoría Gratis →</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mob-menu" id="mob-menu" role="navigation">
+    <a href="#pain"><span data-lang="en">Services</span><span data-lang="es">Servicios</span></a>
+    <a href="#how"><span data-lang="en">How It Works</span><span data-lang="es">Cómo Funciona</span></a>
+    <a href="#pricing"><span data-lang="en">Pricing</span><span data-lang="es">Precios</span></a>
+    <a href="#cta"><span data-lang="en">Contact</span><span data-lang="es">Contacto</span></a>
+    <div class="mob-footer">
+      <a href="#cta" class="btn btn-primary" style="padding:11px 22px;font-size:.9rem;">
+        <span data-lang="en">Free Audit →</span><span data-lang="es">Auditoría Gratis →</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ══ HERO ═══════════════════════════════════════════════════════════════════ -->
+<section id="hero" aria-labelledby="hero-h">
+  <div class="hero-in">
+
+    <!-- LEFT -->
+    <div>
+      <div class="hero-pill">
+        <span class="hero-pill-dot"></span>
+        <span data-lang="en">HIPAA-Ready · Miami-Based · Bilingual</span>
+        <span data-lang="es">Cumple HIPAA · Miami · Bilingüe</span>
+      </div>
+
+      <h1 id="hero-h">
+        <span data-lang="en">Stop Losing Revenue to <span class="grad">No-Shows, Missed Calls &amp; Billing Gaps</span></span>
+        <span data-lang="es">Deja de perder ingresos por <span class="grad">ausencias, llamadas perdidas y errores de facturación</span></span>
+      </h1>
+
+      <p class="hero-sub">
+        <span data-lang="en">Miami clinics lose $3K–$10K/month to three silent gaps. ClinicBoostMiami fixes all three — inside the tools you already use.</span>
+        <span data-lang="es">Las clínicas de Miami pierden $3K–$10K/mes por tres problemas silenciosos. ClinicBoostMiami los resuelve todos — con las herramientas que ya usas.</span>
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#cta" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+          <span data-lang="en">Book Free Audit</span>
+          <span data-lang="es">Agenda Tu Auditoría</span>
+        </a>
+        <a href="#how" class="btn btn-outline">
+          <span data-lang="en">See How It Works</span>
+          <span data-lang="es">Ver Cómo Funciona</span>
+        </a>
+      </div>
+      <p class="hero-micro">
+        <span data-lang="en">No credit card. 30 minutes. We come to you.</span>
+        <span data-lang="es">Sin tarjeta de crédito. 30 minutos. Vamos a tu clínica.</span>
+      </p>
+
+      <div class="hero-stats">
+        <div class="h-stat">
+          <div class="h-stat-n">$3K–$10K</div>
+          <div class="h-stat-l"><span data-lang="en">monthly loss / clinic</span><span data-lang="es">pérdida mensual / clínica</span></div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-n">25%</div>
+          <div class="h-stat-l"><span data-lang="en">avg no-show rate</span><span data-lang="es">tasa de no-shows</span></div>
+        </div>
+        <div class="h-stat">
+          <div class="h-stat-n">5–7 days</div>
+          <div class="h-stat-l"><span data-lang="en">dashboard go-live</span><span data-lang="es">activación del dashboard</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: dark dashboard mockup -->
+    <div class="hero-dash reveal" role="img" aria-label="Sample clinic performance dashboard">
+      <div class="dash-hdr">
+        <div class="dash-title">
+          <span data-lang="en">Clinic Performance — Today</span>
+          <span data-lang="es">Rendimiento de la Clínica — Hoy</span>
+        </div>
+        <div class="dash-live">
+          <span class="dash-live-dot"></span>
+          <span data-lang="en">Live</span><span data-lang="es">En vivo</span>
+        </div>
+      </div>
+
+      <div class="bar-row">
+        <div class="bar lo" style="height:42%;--i:0"></div>
+        <div class="bar hi" style="height:51%;--i:1"></div>
+        <div class="bar lo" style="height:45%;--i:2"></div>
+        <div class="bar hi" style="height:66%;--i:3"></div>
+        <div class="bar lo" style="height:70%;--i:4"></div>
+        <div class="bar hi" style="height:63%;--i:5"></div>
+        <div class="bar lo" style="height:78%;--i:6"></div>
+        <div class="bar hi" style="height:73%;--i:7"></div>
+        <div class="bar lo" style="height:86%;--i:8"></div>
+        <div class="bar hi" style="height:90%;--i:9"></div>
+        <div class="bar lo" style="height:68%;--i:10"></div>
+        <div class="bar hi" style="height:84%;--i:11"></div>
+      </div>
+      <div class="bar-lbl"><span data-lang="en">Monthly Revenue Trend</span><span data-lang="es">Tendencia de Ingresos</span></div>
+
+      <div class="d-metrics">
+        <div class="d-row">
+          <div class="d-row-l"><span class="mdot mdot-g"></span><span data-lang="en">Revenue MTD</span><span data-lang="es">Ingresos MTD</span></div>
+          <div class="d-val g">$38,240</div>
+        </div>
+        <div class="d-row">
+          <div class="d-row-l"><span class="mdot mdot-a"></span><span data-lang="en">No-Shows This Week</span><span data-lang="es">Citas Perdidas</span></div>
+          <div class="d-val r">14 <span style="font-size:.65rem;font-weight:400;color:#4B5563">(-$4,200)</span></div>
+        </div>
+        <div class="d-row">
+          <div class="d-row-l"><span class="mdot mdot-i"></span><span data-lang="en">CSAT Score</span><span data-lang="es">Satisfacción</span></div>
+          <div class="d-val g">4.8 / 5.0</div>
+        </div>
+      </div>
+
+      <div class="d-foot">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span data-lang="en">HIPAA-compliant · Updates daily · Your real data</span>
+        <span data-lang="es">Cumple HIPAA · Se actualiza diariamente</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ TRUST STRIP ════════════════════════════════════════════════════════════ -->
+<div id="trust" aria-label="Compliance and trust indicators">
+  <div class="trust-in">
+
+    <div class="t-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+      <span><span data-lang="en">HIPAA BAA — Every Plan</span><span data-lang="es">BAA HIPAA — Cada Plan</span></span>
+    </div>
+
+    <div class="t-sep" aria-hidden="true"></div>
+
+    <div class="t-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 7-8 12-8 12s-8-5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span><span data-lang="en">Miami-Dade Based</span><span data-lang="es">Con Base en Miami-Dade</span></span>
+    </div>
+
+    <div class="t-sep" aria-hidden="true"></div>
+
+    <div class="t-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span><span data-lang="en">Bilingual — EN / ES</span><span data-lang="es">Bilingüe — EN / ES</span></span>
+    </div>
+
+    <div class="t-sep" aria-hidden="true"></div>
+
+    <div class="t-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+      <span><span data-lang="en">Tech-Agnostic — M365 or Google</span><span data-lang="es">Agnóstico — M365 o Google</span></span>
+    </div>
+
+    <div class="t-sep" aria-hidden="true"></div>
+
+    <div class="t-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      <span><span data-lang="en">Florida LLC — Registered</span><span data-lang="es">LLC de Florida — Registrada</span></span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ PAIN POINTS ════════════════════════════════════════════════════════════ -->
+<section id="pain" aria-labelledby="pain-h">
+  <div class="wrap">
+    <div class="t-center reveal">
+      <div class="eyebrow"><span class="eyebrow-dot"></span><span data-lang="en">The Real Problem</span><span data-lang="es">El Problema Real</span></div>
+      <h2 id="pain-h" class="s-title">
+        <span data-lang="en">3 silent killers in every <span class="grad">small clinic</span></span>
+        <span data-lang="es">3 problemas silenciosos en <span class="grad">toda clínica pequeña</span></span>
+      </h2>
+      <p class="s-sub">
+        <span data-lang="en">You're running your business blind. These three gaps are why Miami clinics leave serious money on the table every month.</span>
+        <span data-lang="es">Estás operando a ciegas. Estos tres problemas son la razón por la que las clínicas pierden dinero cada mes.</span>
+      </p>
+    </div>
+
+    <div class="pain-grid">
+
+      <!-- No-Shows -->
+      <div class="pain-card reveal">
+        <div class="pain-ico">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+        </div>
+        <h3><span data-lang="en">No-Shows Killing Revenue</span><span data-lang="es">Citas Perdidas — Ingresos Destruidos</span></h3>
+        <p><span data-lang="en">No tracking. No reminders. No recapture. Every missed slot is cash your clinic will never see again.</span><span data-lang="es">Sin rastreo. Sin recordatorios. Sin recuperación. Cada cita perdida es dinero que tu clínica nunca verá.</span></p>
+        <div class="pain-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span data-lang="en">Avg loss: $3,000–$10,000/mo</span><span data-lang="es">Pérdida promedio: $3K–$10K/mes</span>
+        </div>
+      </div>
+
+      <!-- Financial Visibility -->
+      <div class="pain-card reveal" style="transition-delay:.1s">
+        <div class="pain-ico">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3><span data-lang="en">Zero Financial Visibility</span><span data-lang="es">Cero Visibilidad Financiera</span></h3>
+        <p><span data-lang="en">Which provider is most profitable? Which claims are aging past 60 days? Most clinic owners have no idea — until it's too late.</span><span data-lang="es">¿Qué proveedor es más rentable? ¿Qué reclamaciones llevan más de 60 días? La mayoría no lo sabe — hasta que es tarde.</span></p>
+        <div class="pain-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span data-lang="en">Invisible leaks avg $2,000+/mo</span><span data-lang="es">Fugas invisibles avg $2,000+/mes</span>
+        </div>
+      </div>
+
+      <!-- Call Chaos -->
+      <div class="pain-card reveal" style="transition-delay:.2s">
+        <div class="pain-ico">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.03z"/></svg>
+        </div>
+        <h3><span data-lang="en">Front Desk &amp; Call Center Chaos</span><span data-lang="es">Caos en el Front Desk y Call Center</span></h3>
+        <p><span data-lang="en">Missed calls, long hold times, zero KPI tracking. Your patients leave for competitors — and you don't even know it's happening.</span><span data-lang="es">Llamadas perdidas, esperas largas, sin métricas. Los pacientes se van con la competencia — y ni te enteras.</span></p>
+        <div class="pain-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span data-lang="en">30% of missed calls never call back</span><span data-lang="es">30% de llamadas perdidas no regresa</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ═══════════════════════════════════════════════════════════ -->
+<section id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="t-center reveal">
+      <div class="eyebrow"><span class="eyebrow-dot"></span><span data-lang="en">The Process</span><span data-lang="es">El Proceso</span></div>
+      <h2 id="how-h" class="s-title">
+        <span data-lang="en">Simple. Fast. <span class="grad">No disruption.</span></span>
+        <span data-lang="es">Simple. Rápido. <span class="grad">Sin interrupciones.</span></span>
+      </h2>
+      <p class="s-sub">
+        <span data-lang="en">We work inside Microsoft 365 or Google Workspace — whatever you already have. No migrations. No new software. No learning curve.</span>
+        <span data-lang="es">Trabajamos dentro de Microsoft 365 o Google Workspace — lo que ya tienes. Sin migraciones. Sin software nuevo.</span>
+      </p>
+    </div>
+
+    <div class="steps-grid">
+
+      <div class="step reveal">
+        <div class="step-n">01</div>
+        <div>
+          <div class="step-lbl"><span data-lang="en">Audit</span><span data-lang="es">Auditoría</span></div>
+          <h3><span data-lang="en">Free 30-Min Audit</span><span data-lang="es">Auditoría Gratuita de 30 Min</span></h3>
+          <p><span data-lang="en">We map your no-show rate, financial gaps, and call center performance — in dollars, not vague percentages.</span><span data-lang="es">Identificamos tus citas perdidas, brechas financieras y desempeño del call center — en dólares, no porcentajes vagos.</span></p>
+        </div>
+      </div>
+
+      <div class="step reveal" style="transition-delay:.12s">
+        <div class="step-n">02</div>
+        <div>
+          <div class="step-lbl"><span data-lang="en">Map</span><span data-lang="es">Mapear</span></div>
+          <h3><span data-lang="en">Revenue Gap Report</span><span data-lang="es">Reporte de Brechas de Ingresos</span></h3>
+          <p><span data-lang="en">We deliver a custom 3-page report showing every revenue leak, which automations fix them, and your 90-day projected ROI.</span><span data-lang="es">Entregamos un informe de 3 páginas con cada fuga de ingresos, las automatizaciones que las resuelven y el ROI proyectado a 90 días.</span></p>
+        </div>
+      </div>
+
+      <div class="step reveal" style="transition-delay:.24s">
+        <div class="step-n">03</div>
+        <div>
+          <div class="step-lbl"><span data-lang="en">Build &amp; Monitor</span><span data-lang="es">Construir y Monitorear</span></div>
+          <h3><span data-lang="en">Custom Build + Ongoing Support</span><span data-lang="es">Configuración + Soporte Continuo</span></h3>
+          <p><span data-lang="en">We build your dashboards and automations inside your existing tools, then monitor, alert, and improve month over month.</span><span data-lang="es">Construimos tus dashboards y automatizaciones, luego monitoreamos, alertamos y mejoramos mes a mes.</span></p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Metrics categories grid -->
+    <div class="metrics-grid">
+
+      <div class="m-card reveal">
+        <div class="m-ico mi-a">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h4><span data-lang="en">Financial Health</span><span data-lang="es">Salud Financiera</span></h4>
+        <div class="m-tags">
+          <span class="m-tag"><span data-lang="en">Revenue</span><span data-lang="es">Ingresos</span></span>
+          <span class="m-tag"><span data-lang="en">Margins</span><span data-lang="es">Márgenes</span></span>
+          <span class="m-tag"><span data-lang="en">A/R Aging</span><span data-lang="es">Cuentas por Cobrar</span></span>
+        </div>
+      </div>
+
+      <div class="m-card reveal" style="transition-delay:.06s">
+        <div class="m-ico mi-b">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h4><span data-lang="en">Appointments</span><span data-lang="es">Citas</span></h4>
+        <div class="m-tags">
+          <span class="m-tag"><span data-lang="en">No-Shows</span><span data-lang="es">Citas Perdidas</span></span>
+          <span class="m-tag"><span data-lang="en">Occupancy</span><span data-lang="es">Ocupación</span></span>
+          <span class="m-tag"><span data-lang="en">Peak Hours</span><span data-lang="es">Horas Pico</span></span>
+        </div>
+      </div>
+
+      <div class="m-card reveal" style="transition-delay:.12s">
+        <div class="m-ico mi-c">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.03z"/></svg>
+        </div>
+        <h4><span data-lang="en">Call Center</span><span data-lang="es">Call Center</span></h4>
+        <div class="m-tags">
+          <span class="m-tag"><span data-lang="en">Calls/Day</span><span data-lang="es">Llamadas/Día</span></span>
+          <span class="m-tag"><span data-lang="en">Hold Time</span><span data-lang="es">Tiempo de Espera</span></span>
+          <span class="m-tag">CSAT</span>
+        </div>
+      </div>
+
+      <div class="m-card reveal" style="transition-delay:.18s">
+        <div class="m-ico mi-d">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h4><span data-lang="en">Patients</span><span data-lang="es">Pacientes</span></h4>
+        <div class="m-tags">
+          <span class="m-tag"><span data-lang="en">Retention</span><span data-lang="es">Retención</span></span>
+          <span class="m-tag"><span data-lang="en">New Patients</span><span data-lang="es">Nuevos Pacientes</span></span>
+          <span class="m-tag"><span data-lang="en">Referrals</span><span data-lang="es">Referidos</span></span>
+        </div>
+      </div>
+
+      <div class="m-card reveal" style="transition-delay:.24s">
+        <div class="m-ico mi-e">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        </div>
+        <h4><span data-lang="en">Staff &amp; Providers</span><span data-lang="es">Personal y Proveedores</span></h4>
+        <div class="m-tags">
+          <span class="m-tag"><span data-lang="en">Productivity</span><span data-lang="es">Productividad</span></span>
+          <span class="m-tag"><span data-lang="en">Schedule vs Actual</span><span data-lang="es">Agenda vs Real</span></span>
+        </div>
+      </div>
+
+      <div class="m-card reveal" style="transition-delay:.30s">
+        <div class="m-ico mi-f">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4><span data-lang="en">IT + Custom Metrics</span><span data-lang="es">TI + Métricas Personalizadas</span></h4>
+        <div class="m-tags">
+          <span class="m-tag"><span data-lang="en">Uptime</span><span data-lang="es">Disponibilidad</span></span>
+          <span class="m-tag"><span data-lang="en">Security</span><span data-lang="es">Seguridad</span></span>
+          <span class="m-tag"><span data-lang="en">Any Metric</span><span data-lang="es">Cualquier Métrica</span></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ PRICING ════════════════════════════════════════════════════════════════ -->
+<section id="pricing" aria-labelledby="pricing-h">
+  <div class="wrap">
+    <div class="t-center reveal">
+      <div class="eyebrow"><span class="eyebrow-dot"></span><span data-lang="en">Pricing</span><span data-lang="es">Precios</span></div>
+      <h2 id="pricing-h" class="s-title">
+        <span data-lang="en">Transparent. <span class="grad">No surprises.</span></span>
+        <span data-lang="es">Transparente. <span class="grad">Sin sorpresas.</span></span>
+      </h2>
+      <p class="s-sub">
+        <span data-lang="en">Every plan includes a signed HIPAA BAA. Annual billing: pay 10 months, get 12. Setup fee waived for qualifying founding clients.</span>
+        <span data-lang="es">Cada plan incluye un BAA de HIPAA firmado. Facturación anual: paga 10 meses, obtén 12. Tarifa de configuración exonerada para clientes fundadores.</span>
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Starter -->
+      <div class="p-card reveal">
+        <div class="p-tier t-starter">Starter</div>
+        <div class="p-price">$199<span>/mo</span></div>
+        <div class="p-yr"><span data-lang="en">$1,990/yr — save $398</span><span data-lang="es">$1,990/año — ahorra $398</span></div>
+        <div class="p-setup"><span data-lang="en">+ $499 one-time setup</span><span data-lang="es">+ $499 configuración única</span></div>
+        <div class="p-waived"><span data-lang="en">Waived for founding clients — ask us.</span><span data-lang="es">Exonerada para clientes fundadores.</span></div>
+        <div class="p-desc"><span data-lang="en">Perfect for clinics ready to see their numbers clearly for the first time.</span><span data-lang="es">Ideal para clínicas listas para ver sus números por primera vez.</span></div>
+        <ul class="p-feats">
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">1 Revenue Tracking Dashboard</span><span data-lang="es">1 Dashboard de Seguimiento de Ingresos</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">1 Process Automation</span><span data-lang="es">1 Automatización de Procesos</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">5 hrs clinic operations support/mo</span><span data-lang="es">5 horas de soporte operativo/mes</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">HIPAA BAA Included</span><span data-lang="es">BAA HIPAA Incluido</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">Microsoft 365 OR Google Workspace</span><span data-lang="es">Microsoft 365 O Google Workspace</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">Monthly performance summary</span><span data-lang="es">Resumen mensual de desempeño</span></li>
+        </ul>
+        <a href="#cta" class="btn btn-outline p-cta"><span data-lang="en">Get Started →</span><span data-lang="es">Empezar →</span></a>
+      </div>
+
+      <!-- Growth (featured) -->
+      <div class="p-card feat reveal" style="transition-delay:.1s">
+        <div class="p-badge"><span data-lang="en">⭐ Most Popular</span><span data-lang="es">⭐ Más Popular</span></div>
+        <div class="p-tier t-growth">Growth</div>
+        <div class="p-price">$299<span>/mo</span></div>
+        <div class="p-yr"><span data-lang="en">$2,990/yr — save $598</span><span data-lang="es">$2,990/año — ahorra $598</span></div>
+        <div class="p-setup"><span data-lang="en">+ $499 one-time setup</span><span data-lang="es">+ $499 configuración única</span></div>
+        <div class="p-waived"><span data-lang="en">Waived for founding clients — ask us.</span><span data-lang="es">Exonerada para clientes fundadores.</span></div>
+        <div class="p-desc"><span data-lang="en">Full operational visibility + call center performance + 3 automations running on autopilot.</span><span data-lang="es">Visibilidad operativa completa + call center + 3 automatizaciones en piloto automático.</span></div>
+        <ul class="p-feats">
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">Complete Clinic Performance Dashboard</span><span data-lang="es">Dashboard Completo de la Clínica</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">3 Process Automations</span><span data-lang="es">3 Automatizaciones de Procesos</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">Call Center Setup + KPI Tracking</span><span data-lang="es">Configuración de Call Center + KPIs</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">Email &amp; Phone Support</span><span data-lang="es">Soporte por Email y Teléfono</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">HIPAA BAA Included</span><span data-lang="es">BAA HIPAA Incluido</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">Bi-weekly performance reports</span><span data-lang="es">Reportes de desempeño quincenales</span></li>
+        </ul>
+        <a href="#cta" class="btn btn-primary p-cta"><span data-lang="en">Get Started →</span><span data-lang="es">Empezar →</span></a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="p-card reveal" style="transition-delay:.2s">
+        <div class="p-tier t-ent">Enterprise</div>
+        <div class="p-price">$749<span>/mo</span></div>
+        <div class="p-yr"><span data-lang="en">$7,490/yr — save $1,498</span><span data-lang="es">$7,490/año — ahorra $1,498</span></div>
+        <div class="p-setup"><span data-lang="en">+ $499 one-time setup</span><span data-lang="es">+ $499 configuración única</span></div>
+        <div class="p-waived"><span data-lang="en">Waived for founding clients — ask us.</span><span data-lang="es">Exonerada para clientes fundadores.</span></div>
+        <div class="p-desc"><span data-lang="en">The full stack — EHR data integration, up to 15 automations, full call center management, and weekly executive reports.</span><span data-lang="es">El paquete completo — integración EHR, hasta 15 automatizaciones, gestión completa del call center y reportes ejecutivos semanales.</span></div>
+        <ul class="p-feats">
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">Up to 15 active automations</span><span data-lang="es">Hasta 15 automatizaciones activas</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">EHR Integration (your system data)</span><span data-lang="es">Integración EHR (datos de tu sistema)</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">Full Call Center Installation &amp; Mgmt</span><span data-lang="es">Instalación y Gestión Completa de Call Center</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">Priority support — same business day</span><span data-lang="es">Soporte prioritario — mismo día hábil</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">Weekly Executive Reports</span><span data-lang="es">Reportes Ejecutivos Semanales</span></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span data-lang="en">BAA + Custom SLA</span><span data-lang="es">BAA + SLA Personalizado</span></li>
+        </ul>
+        <a href="#cta" class="btn btn-outline p-cta"><span data-lang="en">Get Started →</span><span data-lang="es">Empezar →</span></a>
+      </div>
+
+    </div>
+
+    <div class="pricing-foot reveal">
+      <div class="p-note">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+        <span data-lang="en">Annual deal: pay 10 months, get 12</span><span data-lang="es">Anual: paga 10 meses, obtén 12</span>
+      </div>
+      <div class="p-note">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span data-lang="en">HIPAA BAA signed before any access</span><span data-lang="es">BAA firmado antes de cualquier acceso</span>
+      </div>
+      <div class="p-note">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <span data-lang="en">Setup fee waived for founding clients</span><span data-lang="es">Setup exonerado para clientes fundadores</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA + FORM ════════════════════════════════════════════════════════ -->
+<section id="cta" aria-labelledby="cta-h">
+  <div class="wrap cta-in">
+    <div class="t-center reveal">
+      <div class="eyebrow"><span class="eyebrow-dot"></span><span data-lang="en">Free Audit</span><span data-lang="es">Auditoría Gratuita</span></div>
+      <h2 id="cta-h" class="s-title">
+        <span data-lang="en">Start with a free <span class="grad">clinic discovery call</span></span>
+        <span data-lang="es">Comienza con una <span class="grad">llamada de diagnóstico gratuita</span></span>
+      </h2>
+      <p class="s-sub">
+        <span data-lang="en">No commitment. No sales pressure. Just 30 minutes to map your clinic's revenue gaps — at zero cost.</span>
+        <span data-lang="es">Sin compromiso. Sin presión de ventas. Solo 30 minutos para identificar las brechas de ingresos — sin costo.</span>
+      </p>
+    </div>
+
+    <div class="cta-form-wrap reveal">
+
+      <div id="form-success">
+          <h3><span data-lang="en">We'll be in touch within 1 business day.</span><span data-lang="es">Te contactaremos en 1 día hábil.</span></h3>
+          <p><span data-lang="en">Thank you — check your email for a confirmation.</span><span data-lang="es">Gracias — revisa tu correo para la confirmación.</span></p>
+        </div>
+
+        <div id="form-error" role="alert">
+          <p>
+            <strong><span data-lang="en">⚠ Something went wrong.</span><span data-lang="es">⚠ Algo salió mal.</span></strong><br>
+            <span data-lang="en">We couldn't send your request right now. Please try again in a moment, or email us directly at <strong>hola@clinicboostmiami.com</strong></span>
+            <span data-lang="es">No pudimos enviar tu solicitud en este momento. Por favor, intenta de nuevo o escríbenos a <strong>hola@clinicboostmiami.com</strong></span>
+          </p>
+        </div>
+
+        <form id="cbm-form"
+              action="#"
+              method="POST"
+              novalidate
+              aria-label="Free clinic discovery call intake form">
+          <input type="hidden" id="form-lang" name="language" value="en" />
+
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="cbm-name"><span data-lang="en">Full name *</span><span data-lang="es">Nombre completo *</span></label>
+              <input type="text" id="cbm-name" name="name" required autocomplete="name"
+                     placeholder="Dr. Jane Smith">
+              <span class="cf-field-msg" id="err-name" aria-live="polite">
+                <span data-lang="en">Please enter your full name.</span>
+                <span data-lang="es">Por favor ingresa tu nombre completo.</span>
+              </span>
+            </div>
+            <div class="cf-field">
+              <label for="cbm-clinic"><span data-lang="en">Clinic name *</span><span data-lang="es">Nombre de la clínica *</span></label>
+              <input type="text" id="cbm-clinic" name="clinic" required autocomplete="organization"
+                     placeholder="Miami Family Care">
+              <span class="cf-field-msg" id="err-clinic" aria-live="polite">
+                <span data-lang="en">Please enter your clinic name.</span>
+                <span data-lang="es">Por favor ingresa el nombre de tu clínica.</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="cbm-email"><span data-lang="en">Email *</span><span data-lang="es">Email *</span></label>
+              <input type="email" id="cbm-email" name="_replyto" required autocomplete="email"
+                     placeholder="you@clinic.com">
+              <span class="cf-field-msg" id="err-email" aria-live="polite">
+                <span data-lang="en">Please enter a valid email address.</span>
+                <span data-lang="es">Por favor ingresa un correo electrónico válido.</span>
+              </span>
+            </div>
+            <div class="cf-field">
+              <label for="cbm-phone"><span data-lang="en">Phone</span><span data-lang="es">Teléfono</span></label>
+              <input type="tel" id="cbm-phone" name="phone" autocomplete="tel"
+                     placeholder="(305) 000-0000">
+            </div>
+          </div>
+
+          <div class="cf-field">
+            <label for="cbm-pain"><span data-lang="en">Biggest pain point *</span><span data-lang="es">Tu mayor problema *</span></label>
+            <select id="cbm-pain" name="pain_point" required>
+              <option value="" disabled selected>
+                <span data-lang="en">Select one…</span>
+              </option>
+              <option value="no_shows"><span data-lang="en">No-shows killing my revenue</span></option>
+              <option value="financial_visibility"><span data-lang="en">Zero visibility into clinic finances</span></option>
+              <option value="call_center"><span data-lang="en">Call center / missed calls chaos</span></option>
+              <option value="all_three"><span data-lang="en">All three, honestly</span></option>
+              <option value="other"><span data-lang="en">Something else</span></option>
+            </select>
+            <span class="cf-field-msg" id="err-pain" aria-live="polite">
+              <span data-lang="en">Please select your biggest pain point.</span>
+              <span data-lang="es">Por favor selecciona tu mayor problema.</span>
+            </span>
+          </div>
+
+          <div class="cf-field">
+            <label for="cbm-stack"><span data-lang="en">Tools you use (Microsoft 365, Google, EHR…)</span><span data-lang="es">Herramientas actuales (Microsoft 365, Google, EHR…)</span></label>
+            <input type="text" id="cbm-stack" name="tech_stack"
+                   placeholder="e.g., M365 + eClinicalWorks">
+          </div>
+
+          <div class="cf-field">
+            <label for="cbm-notes"><span data-lang="en">Anything else we should know?</span><span data-lang="es">¿Algo más que debamos saber?</span></label>
+            <textarea id="cbm-notes" name="notes" rows="3" placeholder="Optional…"></textarea>
+          </div>
+
+          <!-- Anti-spam honeypot — real users never see or fill this -->
+          <div class="hp-field" aria-hidden="true">
+            <label for="_honey">Leave this field blank</label>
+            <input type="text" id="_honey" name="_honey" tabindex="-1" autocomplete="off" value="" />
+          </div>
+
+          <button type="submit" class="btn btn-primary cf-submit">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            <span data-lang="en">Send My Free Audit Request</span>
+            <span data-lang="es">Enviar Solicitud de Auditoría</span>
+          </button>
+          <p class="cf-note">
+            <span data-lang="en">No commitment. HIPAA BAA signed before any access. We respond in 1 business day.</span>
+            <span data-lang="es">Sin compromiso. BAA firmado antes de cualquier acceso. Respondemos en 1 día hábil.</span>
+          </p>
+        </form>
+      </div>
+
+      <!-- Trust strip -->
+      <div class="cta-trust-strip reveal" style="transition-delay:.1s">
+        <span class="ts-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span data-lang="en">HIPAA BAA Included</span><span data-lang="es">BAA HIPAA Incluido</span>
+        </span>
+        <span class="ts-dot">·</span>
+        <span class="ts-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span data-lang="en">Response in 1 Business Day</span><span data-lang="es">Respuesta en 1 Día Hábil</span>
+        </span>
+        <span class="ts-dot">·</span>
+        <span class="ts-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <span data-lang="en">No Commitment</span><span data-lang="es">Sin Compromiso</span>
+        </span>
+        <span class="ts-dot">·</span>
+        <span class="ts-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          <span data-lang="en">English &amp; Spanish</span><span data-lang="es">Inglés y Español</span>
+        </span>
+      </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-logo">ClinicBoostMiami</div>
+    <p class="foot-tag">
+      <span data-lang="en">Healthcare IT Automation · Miami-Dade, FL</span>
+      <span data-lang="es">Automatización IT para Salud · Miami-Dade, FL</span>
+    </p>
+    <ul class="foot-links">
+      <li><a href="#pain"><span data-lang="en">Services</span><span data-lang="es">Servicios</span></a></li>
+      <li><a href="#how"><span data-lang="en">How It Works</span><span data-lang="es">Cómo Funciona</span></a></li>
+      <li><a href="#pricing"><span data-lang="en">Pricing</span><span data-lang="es">Precios</span></a></li>
+      <li><a href="#cta"><span data-lang="en">Free Audit</span><span data-lang="es">Auditoría Gratis</span></a></li>
+    </ul>
+    <div class="foot-trust">
+      <span data-lang="en">HIPAA BAA Included</span><span data-lang="es">BAA HIPAA Incluido</span>
+      <span class="dot">·</span>
+      <span data-lang="en">Florida LLC</span><span data-lang="es">LLC de Florida</span>
+      <span class="dot">·</span>
+      <span data-lang="en">Miami-Dade Based</span><span data-lang="es">Con base en Miami-Dade</span>
+      <span class="dot">·</span>
+      <span data-lang="en">English &amp; Spanish</span><span data-lang="es">Inglés y Español</span>
+    </div>
+    <p class="foot-copy">© <span id="yr"></span> ClinicBoostMiami. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // ── YEAR
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ── LANGUAGE TOGGLE
+  const langBtn = document.getElementById('lang-btn');
+  let isES = false;
+  langBtn.addEventListener('click', () => {
+    isES = !isES;
+    document.body.classList.toggle('lang-es', isES);
+    langBtn.textContent = isES ? 'EN' : 'ES';
+    document.getElementById('form-lang').value = isES ? 'es' : 'en';
+    // update select placeholder
+    const sel = document.getElementById('cbm-pain');
+    if (sel.value === '') {
+      sel.options[0].text = isES ? 'Selecciona una opción…' : 'Select one…';
+    }
+  });
+
+  // ── NAV SCROLL
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // ── HAMBURGER
+  const hbg = document.getElementById('hamburger');
+  const mob = document.getElementById('mob-menu');
+  hbg.addEventListener('click', () => {
+    const open = mob.classList.toggle('open');
+    hbg.classList.toggle('open', open);
+    hbg.setAttribute('aria-expanded', open);
+  });
+  // close on link click
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mob.classList.remove('open'); hbg.classList.remove('open'); hbg.setAttribute('aria-expanded', false);
+  }));
+
+  // ── SCROLL REVEAL
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ── SMOOTH MOBILE: close menu when any internal link clicked
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => {
+      mob.classList.remove('open'); hbg.classList.remove('open');
+    });
+  });
+
+  // ── FORM SUBMISSION (hardened: secret token + honeypot + validation + error UI)
+
+  // TASK 1: Webhook URL lives only in JS — not in the HTML action attribute.
+  // TASK 1: x-api-key token — copy this exact value into your n8n webhook Header Auth.
+  const WEBHOOK_URL = 'https://clinicboostmiami.app.n8n.cloud/webhook/clinic-form';
+  const WEBHOOK_TOKEN = 'cbm_9xK2nP4mQvTj3Z6L8fR1yW5dAe7cU0N';
+
+  const form    = document.getElementById('cbm-form');
+  const success = document.getElementById('form-success');
+  const formErr = document.getElementById('form-error');
+
+  // ── TASK 4: Validation helpers
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function setFieldError(inputId, msgId, hasError) {
+    const input = document.getElementById(inputId);
+    const msg   = document.getElementById(msgId);
+    if (!input || !msg) return;
+    input.classList.toggle('invalid', hasError);
+    msg.classList.toggle('show', hasError);
+  }
+
+  function clearAllErrors() {
+    ['cbm-name','cbm-clinic','cbm-email','cbm-pain'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('invalid');
+    });
+    ['err-name','err-clinic','err-email','err-pain'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('show');
+    });
+    formErr.classList.remove('show');
+  }
+
+  function validateForm() {
+    const name  = document.getElementById('cbm-name').value.trim();
+    const clinic = document.getElementById('cbm-clinic').value.trim();
+    const email = document.getElementById('cbm-email').value.trim();
+    const pain  = document.getElementById('cbm-pain').value;
+    let valid = true;
+
+    setFieldError('cbm-name',  'err-name',  name === '');
+    if (name === '') valid = false;
+
+    setFieldError('cbm-clinic','err-clinic', clinic === '');
+    if (clinic === '') valid = false;
+
+    const emailInvalid = email === '' || !EMAIL_RE.test(email);
+    setFieldError('cbm-email', 'err-email', emailInvalid);
+    if (emailInvalid) valid = false;
+
+    setFieldError('cbm-pain',  'err-pain',  pain === '');
+    if (pain === '') valid = false;
+
+    return valid;
+  }
+
+  // Clear field error on user input (live feedback)
+  ['cbm-name','cbm-clinic','cbm-email','cbm-pain'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => {
+      const errId = 'err-' + id.replace('cbm-','');
+      setFieldError(id, errId, false);
+      formErr.classList.remove('show');
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // TASK 2: Honeypot check — bots fill hidden fields, humans don't.
+    const honey = document.getElementById('_honey');
+    if (honey && honey.value !== '') {
+      // Silent reject — bot submission detected.
+      form.style.display = 'none';
+      success.classList.add('show');
+      return;
+    }
+
+    // TASK 4: Run validation before anything else.
+    clearAllErrors();
+    if (!validateForm()) {
+      // Scroll to first invalid field
+      const firstInvalid = form.querySelector('.invalid');
+      if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const btn = form.querySelector('.cf-submit');
+    const origHTML = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span data-lang="en">Sending…</span><span data-lang="es">Enviando…</span>';
+    document.body.classList.toggle('lang-es', isES);
+
+    try {
+      const data = new FormData(form);
+      // TASK 1: x-api-key header added — n8n webhook must validate this token.
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Accept': 'application/json',
+          'x-api-key': WEBHOOK_TOKEN
+        }
+      });
+      if (res.ok || res.status === 200) {
+        form.style.display = 'none';
+        success.classList.add('show');
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        throw new Error('Server returned ' + res.status);
+      }
+    } catch {
+      btn.disabled = false;
+      btn.innerHTML = origHTML;
+      document.body.classList.toggle('lang-es', isES);
+      // TASK 3: Show error div instead of alert()
+      formErr.classList.add('show');
+      formErr.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+</script>
+
+</body>
+</html>
